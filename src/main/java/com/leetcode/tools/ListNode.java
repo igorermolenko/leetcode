@@ -5,8 +5,6 @@ public class ListNode {
     public int val;
     public ListNode next;
 
-    public ListNode() {
-    }
 
     public ListNode(int val) {
         this.val = val;
@@ -22,6 +20,7 @@ public class ListNode {
     }
 
     public static ListNode createList(int[] values) {
+        if (values == null || values.length == 0) return null;
         ListNode head = new ListNode(values[values.length - 1]);
         for (int i = values.length - 2; i >= 0; i--) {
             head = new ListNode(values[i], head);
