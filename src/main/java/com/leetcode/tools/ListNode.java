@@ -17,6 +17,10 @@ public class ListNode {
         this.next = next;
     }
 
+    public String toString() {
+        return String.valueOf(val);
+    }
+
     public static ListNode createList(int[] values) {
         ListNode head = new ListNode(values[values.length - 1]);
         for (int i = values.length - 2; i >= 0; i--) {
@@ -30,6 +34,6 @@ public class ListNode {
             System.out.print(head.val + "->");
             head = head.next;
         }
-        System.out.println("");
+        System.out.println();
     }
 }
