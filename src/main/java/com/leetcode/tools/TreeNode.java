@@ -11,7 +11,7 @@ public class TreeNode {
     TreeNode() {
     }
 
-    TreeNode(int val) {
+    public TreeNode(int val) {
         this.val = val;
     }
 
@@ -24,7 +24,6 @@ public class TreeNode {
     public String toString() {
         return String.valueOf(val);
     }
-
 
     public static TreeNode createTree(Integer[] values) {
         if (values == null || values.length == 0 || values[0] == null) {
@@ -53,7 +52,15 @@ public class TreeNode {
             }
             i++;
         }
-
         return root;
+    }
+
+    public TreeNode getNode(int value) {
+        if (val == value) {
+            return this;
+        }
+        TreeNode l = left != null ? left.getNode(value) : null;
+        TreeNode r = right != null ? right.getNode(value) : null;
+        return l != null ? l : r;
     }
 }
