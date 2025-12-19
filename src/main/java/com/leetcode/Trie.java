@@ -1,9 +1,7 @@
 package com.leetcode;
 
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class Trie {
@@ -40,7 +38,7 @@ public class Trie {
 
         private boolean search(char[] chars, int idx) {
             if (idx == chars.length) {
-                return children.containsKey(null) ;
+                return children.containsKey(null);
             }
             Node child = children.get(chars[idx]);
             if (child == null) {
