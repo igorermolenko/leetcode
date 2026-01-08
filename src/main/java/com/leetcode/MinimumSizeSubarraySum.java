@@ -1,7 +1,5 @@
 package com.leetcode;
 
-import java.util.Arrays;
-
 public class MinimumSizeSubarraySum {
 
     public int minSubArrayLen(int target, int[] nums) {
