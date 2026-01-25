@@ -27,7 +27,12 @@ public class MinimumNumberOfArrowsToBurstBalloons {
     }
 
 
-    public int findMinArrowShots(int[][] points) {
+    //      |  |
+//    |     |
+//        |    |
+//     |        |
+//           |    |
+    public int findMinArrowShots3(int[][] points) {
         Arrays.sort(points, Comparator.comparing(o -> o[1]));
         int result = 1;
         int arrow =  points[0][1];
@@ -37,6 +42,28 @@ public class MinimumNumberOfArrowsToBurstBalloons {
                 arrow = points[i][1];
             }
         }
+        return result;
+    }
+
+//    |     |
+//     |        |
+//      |  |
+//        |    |
+//           |    |
+    public int findMinArrowShots(int[][] points) {
+        Arrays.sort(points, (p1, p2) -> Integer.compare(p1[0], p2[0]));
+        int result = 1;
+        int arrow = points[0][1];
+        for (int i = 1; i < points.length; i++) {
+
+            if (points[i][0] > arrow) {
+                result++;
+                arrow = points[i][1];
+            } else {
+                arrow = Math.min(arrow, points[i][1]);
+            }
+        }
+
         return result;
     }
 
