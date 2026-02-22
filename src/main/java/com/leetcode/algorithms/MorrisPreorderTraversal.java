@@ -4,7 +4,7 @@ import com.leetcode.tools.TreeNode;
 
 import static com.leetcode.tools.TreeNode.createTree;
 
-public class MorrisInorderTraversal {
+public class MorrisPreorderTraversal {
 
     public void traverse(TreeNode root) {
         TreeNode current = root;
@@ -17,10 +17,10 @@ public class MorrisInorderTraversal {
                 TreeNode successor = findSuccessor(current);
                 if (successor.right == null) {
                     successor.right = current;
+                    print(current);
                     current = current.left;
                 } else {
                     successor.right = null;
-                    print(current);
                     current = current.right;
                 }
             }
@@ -41,12 +41,12 @@ public class MorrisInorderTraversal {
 
 
     public static void main(String[] args) {
-        MorrisInorderTraversal task = new MorrisInorderTraversal();
+        MorrisPreorderTraversal task = new MorrisPreorderTraversal();
 
-        TreeNode tree1 = createTree(new Integer[]{5, 2, 6, 1, 4, null, 7, null, null, 3, null, null, 8}); // 1,2,3,4,5,6,7,8
+        TreeNode tree1 = createTree(new Integer[]{5, 2, 6, 1, 4, null, 7, null, null, 3, null, null, 8}); // 5,2,1,4,3,6,7,8
         task.traverse(tree1);
         System.out.println();
-        TreeNode tree2 = createTree(new Integer[]{5, 4, null, 3, null, 2, null, 1, null}); // 1,2,3,4,5
+        TreeNode tree2 = createTree(new Integer[]{5, 4, null, 3, null, 2, null, 1, null}); // 5,4,3,2,1
         task.traverse(tree2);
     }
 }
