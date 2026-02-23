@@ -3,17 +3,18 @@ package com.leetcode.tools;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class TreeNode {
+public class Node {
     public int val;
-    public TreeNode left;
-    public TreeNode right;
+    public Node left;
+    public Node right;
+    public Node next;
 
 
-    public TreeNode(int val) {
+    public Node(int val) {
         this.val = val;
     }
 
-    TreeNode(int val, TreeNode left, TreeNode right) {
+    Node(int val, Node left, Node right) {
         this.val = val;
         this.left = left;
         this.right = right;
@@ -23,42 +24,33 @@ public class TreeNode {
         return String.valueOf(val);
     }
 
-    public static TreeNode createTree(Integer[] values) {
+    public static Node createTree(Integer[] values) {
         if (values == null || values.length == 0 || values[0] == null) {
             return null;
         }
 
-        TreeNode root = new TreeNode(values[0]);
-        Queue<TreeNode> queue = new LinkedList<>();
+        Node root = new Node(values[0]);
+        Queue<Node> queue = new LinkedList<>();
         queue.offer(root);
 
         int i = 1;
         while (i < values.length) {
-            TreeNode current = queue.poll();
+            Node current = queue.poll();
 
             // Add left child
             if (values[i] != null) {
-                current.left = new TreeNode(values[i]);
+                current.left = new Node(values[i]);
                 queue.offer(current.left);
             }
             i++;
 
             // Add right child
             if (i < values.length && values[i] != null) {
-                current.right = new TreeNode(values[i]);
+                current.right = new Node(values[i]);
                 queue.offer(current.right);
             }
             i++;
         }
         return root;
-    }
-
-    public TreeNode getNode(int value) {
-        if (val == value) {
-            return this;
-        }
-        TreeNode l = left != null ? left.getNode(value) : null;
-        TreeNode r = right != null ? right.getNode(value) : null;
-        return l != null ? l : r;
     }
 }
