@@ -11,6 +11,35 @@ import static com.leetcode.tools.TreeNode.createTree;
 
 public class BinaryTreeInorderTraversal {
 
+    // More complex Stack-only solution
+    // Stack-only solutions require extra bookkeeping (markers, flags, or node copies),
+    // making them less readable with no performance benefit.
+    public List<Integer> inorderTraversal2(TreeNode root) {
+        List<Integer> result = new ArrayList<>();
+        if (root == null) return result;
+
+        Deque<TreeNode> stack = new ArrayDeque<>();
+        stack.push(root);
+
+        while (!stack.isEmpty()) {
+            TreeNode node = stack.pop();
+            if (node.left == null && node.right == null) {
+                result.add(node.val);
+            } else if (node.left == null) {
+                stack.push(node.right);
+                result.add(node.val);
+            } else {
+                if (node.right != null) stack.push(node.right);
+                // By pushing a leaf node (no children), the algorithm recognizes it as "ready to add to result" because:
+                // node.left == null && node.right == null → add to result immediately
+                stack.push(new TreeNode(node.val)); // leaf copy
+                stack.push(node.left);
+            }
+        }
+        return result;
+    }
+
+
     public List<Integer> inorderTraversal(TreeNode root) {
         List<Integer> result = new ArrayList<>();
 
