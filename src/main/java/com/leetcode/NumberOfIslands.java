@@ -5,7 +5,7 @@ import com.leetcode.tools.ArrayUtils;
 import java.util.ArrayDeque;
 import java.util.Deque;
 
-public class NumberOfIlands {
+public class NumberOfIslands {
 
     public int numIslands(char[][] grid) {
         int counter = 0;
@@ -52,7 +52,7 @@ public class NumberOfIlands {
     }
 
     public static void main(String[] args) {
-        NumberOfIlands task = new NumberOfIlands();
+        NumberOfIslands task = new NumberOfIslands();
         char[][] grid1 = {
                 {'1', '1', '1', '1', '0'},
                 {'1', '1', '0', '1', '0'},
