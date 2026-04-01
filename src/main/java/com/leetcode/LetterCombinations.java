@@ -16,54 +16,24 @@ public class LetterCombinations {
             '9', new Character[]{'w', 'x', 'y', 'z'}
     );
 
-
-    public List<String> letterCombinations2(String digits) {
-        List<String> result = new ArrayList<>();
-        if (digits == null || digits.isEmpty()) {
-            return result;
-        }
-
-        result.add("");
-        for (char digit : digits.toCharArray()) {
-            Character[] chars = mapping.getOrDefault(digit, new Character[0]);
-            result = createCombinations(result, chars);
-        }
-        return result;
-    }
-
-    private List<String> createCombinations(List<String> sourceCombinations, Character[] chars) {
-        List<String> result = new ArrayList<>();
-        for (String sourceCombination : sourceCombinations) {
-            for (char c : chars) {
-                result.add(sourceCombination + c);
-            }
-        }
-        return result;
-    }
-
-    // ===========================================
-
     public List<String> letterCombinations(String digits) {
         List<String> result = new ArrayList<>();
-        if (digits == null || digits.isEmpty()) {
-            return result;
-        }
 
-        backtrack(result, new StringBuilder(), digits.toCharArray(), 0);
+        addCombinations(digits, 0, result, new StringBuilder());
 
         return result;
     }
 
-    private void backtrack(List<String> result, StringBuilder builder, char[] digits, int idx) {
-        if (idx == digits.length) {
-            result.add(builder.toString());
+
+    private void addCombinations(String digits, int idx, List<String> result, StringBuilder combination) {
+        if (idx == digits.length()) {
+            result.add(combination.toString());
             return;
         }
-        Character[] chars = mapping.getOrDefault(digits[idx], new Character[0]);
-        for (char c : chars) {
-            builder.append(c);
-            backtrack(result, builder, digits, idx + 1);
-            builder.deleteCharAt(idx);
+        for (char ch : mapping.get(digits.charAt(idx))) {
+            combination.append(ch);
+            addCombinations(digits, idx + 1, result, combination);
+            combination.deleteCharAt(combination.length() - 1);
         }
     }
 
