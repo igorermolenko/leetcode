@@ -6,8 +6,9 @@ public class ConstructQuadTree {
         return construct(grid, 0, 0, grid.length);
     }
 
-    public Node construct(int[][] grid, int x, int y, int size) {
-        if (size == 1) {
+    private Node construct(int[][] grid, int x, int y, int size) {
+//        if (size == 1) {
+        if (hasSameValue(grid, x, y, size)) {
             return new Node(grid[x][y] == 1, true);
         }
 
@@ -24,6 +25,18 @@ public class ConstructQuadTree {
         }
 
         return new Node(false, false, topLeft, topRight, bottomLeft, bottomRight);
+    }
+
+    private boolean hasSameValue(int[][] grid, int x, int y, int size) {
+        int val = grid[x][y];
+        for (int i = x; i < x + size; i++) {
+            for (int j = y; j < y + size; j++) {
+                if (val != grid[i][j]) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
 

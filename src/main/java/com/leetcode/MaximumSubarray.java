@@ -2,43 +2,25 @@ package com.leetcode;
 
 public class MaximumSubarray {
 
-    public double findMaxAverage2(int[] nums, int k) {
-        if (nums.length <= k) {
-            int sum = 0;
-            for (int num : nums) {
-                sum += num;
-            }
-            return (double) sum / nums.length;
-        }
-        int maxSum = Integer.MIN_VALUE;
-        for (int i = 0; i < nums.length - k; i++) {
-            int sum = 0;
-            for (int j = 0; j < k; j++) {
-                sum += nums[i + j];
-            }
-            maxSum = Math.max(maxSum, sum);
-        }
-        return (double) maxSum / k;
-    }
-
-    public double findMaxAverage(int[] nums, int k) {
+    public int maxSubArray(int[] nums) {
+        int result = Integer.MIN_VALUE;
         int sum = 0;
-        for (int i = 0; i < k; i++) {
-            sum += nums[i];
+
+        for (int num : nums) {
+            sum = Math.max(sum + num, num);
+            if (sum > result) {
+                result = sum;
+            }
         }
-        int maxSum = sum;
-        for (int i = k; i < nums.length; i++) {
-            sum = sum - nums[i - k] + nums[i];
-            maxSum = Math.max(maxSum, sum);
-        }
-        return (double) maxSum / k;
+
+        return  result;
     }
 
 
     public static void main(String[] args) {
-        MaximumSubarray subarray = new MaximumSubarray();
-        System.out.println(subarray.findMaxAverage(new int[]{1, 12, -5, -6, 50, 3}, 4));
-        System.out.println(subarray.findMaxAverage(new int[]{5}, 1));
-        System.out.println(subarray.findMaxAverage(new int[]{0, 4, 0, 3, 2}, 1));
+        MaximumSubarray task = new MaximumSubarray();
+        System.out.println(task.maxSubArray(new int[]{-2, 1, -3, 4, -1, 2, 1, -5, 4}));
+        System.out.println(task.maxSubArray(new int[]{1}));
+        System.out.println(task.maxSubArray(new int[]{5, 4, -1, 7, 8}));
     }
 }
