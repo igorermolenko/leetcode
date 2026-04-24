@@ -2,6 +2,7 @@ package com.leetcode;
 
 public class BestTimeToBuyAndSellStock {
 
+    //   O(n^2)
     public int maxProfit2(int[] prices) {
         int maxProfit = 0;
 
@@ -17,6 +18,21 @@ public class BestTimeToBuyAndSellStock {
         return maxProfit;
     }
 
+    // Kadane's alroithm    O(n)
+    public int maxProfit1(int[] prices) {
+        int maxProfit = 0;
+        int localMax = 0;
+
+        for (int i = 1; i < prices.length; i++) {
+            int dayProfit = prices[i] - prices[i - 1];
+            localMax = Math.max(0, localMax + dayProfit);
+            maxProfit = Math.max(maxProfit, localMax);
+        }
+
+        return maxProfit;
+    }
+
+    //   O(n)
     public int maxProfit(int[] prices) {
         if (prices == null || prices.length == 0) return 0;
 
