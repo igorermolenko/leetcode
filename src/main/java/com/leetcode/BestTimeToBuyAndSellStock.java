@@ -18,7 +18,7 @@ public class BestTimeToBuyAndSellStock {
         return maxProfit;
     }
 
-    // Kadane's alroithm    O(n)
+    // Kadane's algorithm    O(n)
     public int maxProfit1(int[] prices) {
         int maxProfit = 0;
         int localMax = 0;
