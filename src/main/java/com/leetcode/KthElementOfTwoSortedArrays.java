@@ -3,7 +3,7 @@ package com.leetcode;
 public class KthElementOfTwoSortedArrays {
 
     // Binary Search / Divide and Conquer   - O(log(M+N))
-    public double findKthElement(int[] arr1, int[] arr2, int k) {
+    public int findKthElement(int[] arr1, int[] arr2, int k) {
         if (arr1.length > arr2.length) {
             return findKthElement(arr2, arr1, k);
         }
