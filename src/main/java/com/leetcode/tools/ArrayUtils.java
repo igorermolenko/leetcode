@@ -22,4 +22,18 @@ public class ArrayUtils {
         }
         return sb.toString();
     }
+
+    public static String bidimensialToString(int[][] matrix) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("[");
+        for (int[] ints : matrix) {
+            sb.append("[");
+            for (int anInt : ints) {
+                sb.append(anInt).append(" ,");
+            }
+            sb.append("], ");
+        }
+        sb.append("]");
+        return sb.toString();
+    }
 }
