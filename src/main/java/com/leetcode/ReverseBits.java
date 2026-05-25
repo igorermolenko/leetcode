@@ -20,6 +20,7 @@ public class ReverseBits {
         ReverseBits task = new ReverseBits();
         System.out.println(task.reverseBits(43261596)); // 964176192
         System.out.println(task.reverseBits(2147483644)); // 1073741822
+        System.out.println(task.reverseBits(0b10000000000000000000000000000000)); // 1
     }
 
 }
