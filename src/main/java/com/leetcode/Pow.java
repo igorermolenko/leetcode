@@ -21,9 +21,9 @@ public class Pow {
 
     public static void main(String[] args) {
         Pow task = new Pow();
-//        System.out.println(task.myPow(2.0000, 10));    // 1024
-//        System.out.println(task.myPow(2.10000, 3));    // 9.26100
-//        System.out.println(task.myPow(2.00000, -2));   // 0.25
+        System.out.println(task.myPow(2.0000, 10));    // 1024
+        System.out.println(task.myPow(2.10000, 3));    // 9.26100
+        System.out.println(task.myPow(2.00000, -2));   // 0.25
         System.out.println(task.myPow(2.00000, -2147483648));   // 0.0
     }
 
