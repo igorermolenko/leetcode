@@ -6,7 +6,7 @@ import java.util.Set;
 
 public class WordBreak {
 
-    // Also can be used Prefix Tree instead of HashMap and substring, but it adds complexity
+    // Also can be used Prefix Tre (Trie) instead of HashMap and substring, but it adds complexity
     // With optimizations
     public boolean wordBreak(String s, List<String> wordDict) {
         Set<String> words = new HashSet<>(wordDict);
