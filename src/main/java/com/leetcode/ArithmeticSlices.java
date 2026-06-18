@@ -2,6 +2,7 @@ package com.leetcode;
 
 public class ArithmeticSlices {
 
+    // O(n) - time, O(n) - memory
     public int numberOfArithmeticSlices(int[] nums) {
         int[] dp = new int[nums.length];
         int result = 0;
@@ -15,6 +16,7 @@ public class ArithmeticSlices {
     }
 
     // The same as above but with constant memory
+    // O(n) - time, O(1) - memory
     public int numberOfArithmeticSlices2(int[] nums) {
         int dp = 0;
         int result = 0;
